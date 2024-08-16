@@ -1,11 +1,8 @@
-//took the sample questions from internet
-
 package codsoft.quiz.application.mansurah;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 
 public class Quiz extends JFrame implements ActionListener {
     String questions[][] = new String[10][5];
@@ -14,7 +11,7 @@ public class Quiz extends JFrame implements ActionListener {
 JLabel qno, question,hintIcon;
 JRadioButton opt1,opt2,opt3,opt4;
 JButton next,Lifeline,submit,markReview,reportQuestion,prev;
-public static int timer=10;
+public static int timer=20;
 public static int ans_given = 0;
 public static int count=0;
 ButtonGroup group;
@@ -28,6 +25,8 @@ String name;
         getContentPane().setBackground(Color.WHITE); // Set the full background to white
         setLayout(null); // Use null layout for manual positioning
 
+        //questions[10][5]
+        
         questions[0][0] = "Which is used to find and fix bugs in the Java programs.?";
         questions[0][1] = "JVM";
         questions[0][2] = "JDB";
@@ -99,11 +98,11 @@ String name;
         answers[8][1] = "java.lang.StringBuilder";
         answers[9][1] = "Bytecode is executed by JVM";
         
-        ImageIcon i1 = new ImageIcon(getClass().getResource("/icons/quiz2.jpg"));
+ ImageIcon i1 = new ImageIcon(getClass().getResource("quiz.jpg"));
         JLabel image = new JLabel(i1);
-        image.setBounds(-10, 0, 1440, 200);
+        image.setBounds(-50, 0, 1440, 200);
         add(image);
-
+getContentPane().setBackground(new Color(231, 251, 230));
         qno = new JLabel("1");
         qno.setBounds(100, 250, 50, 30);
         qno.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -117,28 +116,28 @@ String name;
         add(question);
 
          opt1 = new JRadioButton(questions[0][1]);
-        opt1.setBounds(170, 300, 1200, 30); // Adjusted position
+        opt1.setBounds(170, 300, 500, 30); // Adjusted position
         opt1.setBackground(Color.WHITE); // Set button background to white
         opt1.setForeground(Color.BLACK); // Set button text to black
         opt1.setFont(new Font("Dialog", Font.PLAIN, 14));
         add(opt1);
 
         opt2 = new JRadioButton(questions[0][2]);
-        opt2.setBounds(170, 340, 1200, 30); // Adjusted position
+        opt2.setBounds(170, 340, 500, 30); // Adjusted position
         opt2.setBackground(Color.WHITE); // Set button background to white
         opt2.setForeground(Color.BLACK); // Set button text to black
         opt2.setFont(new Font("Dialog", Font.PLAIN, 14));
         add(opt2);
 
         opt3 = new JRadioButton(questions[0][3]);
-        opt3.setBounds(170, 380, 1200, 30); // Adjusted position
+        opt3.setBounds(170, 380, 500, 30); // Adjusted position
         opt3.setBackground(Color.WHITE); // Set button background to white
         opt3.setForeground(Color.BLACK); // Set button text to black
         opt3.setFont(new Font("Dialog", Font.PLAIN, 14));
         add(opt3);
 
         opt4 = new JRadioButton(questions[0][4]);
-        opt4.setBounds(170, 420, 1200, 30); // Adjusted position
+        opt4.setBounds(170, 420, 500, 30); // Adjusted position
         opt4.setBackground(Color.WHITE); // Set button background to white
         opt4.setForeground(Color.BLACK); // Set button text to black
         opt4.setFont(new Font("Dialog", Font.PLAIN, 14));
@@ -200,10 +199,12 @@ String name;
         prev.setEnabled(false); //to disable it
         add(prev);
         
-        ImageIcon hint = new ImageIcon(ClassLoader.getSystemResource("icons/hint.png"));
-        hintIcon = new JLabel(hint);
-        hintIcon.setBounds(740, 400, 40, 40);
-        add(hintIcon);
+//        ImageIcon hint = new ImageIcon(ClassLoader.getSystemResource("icons/hint.png"));
+//        hintIcon = new JLabel(hint);
+//        hintIcon.setBounds(740, 400, 40, 40);
+//        add(hintIcon);
+
+
         start(count);
         
         setVisible(true);
@@ -211,7 +212,7 @@ String name;
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == next){
-            repaint(); // go to next question by incfeasing count
+            repaint(); // go to next question by increasing count
             opt1.setEnabled(true);
             opt2.setEnabled(true);
             opt3.setEnabled(true);
@@ -321,11 +322,11 @@ g.setFont(new Font("Tahoma", Font.BOLD,16));
         }
         if(ans_given==1){
             ans_given=0;
-            timer = 10;
+            timer = 20;
         }
         else if(timer < 0){
             
-            timer=10;
+            timer=20;
             opt1.setEnabled(true);
             opt2.setEnabled(true);
             opt3.setEnabled(true);
@@ -379,10 +380,7 @@ public void start(int count){
      
     opt4.setText(questions[count][4]);
      opt4.setActionCommand(questions[count][4]);
-    
-
-    
-
+ 
     group.clearSelection();
 
 }
